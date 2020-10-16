@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+@using Factory.Models
+
+<h2>@Html.DisplayFor(model => model.EngineerName)</h2>
+<hr />
+<h4>@Html.DisplayFor(model => model.EngineerDetails)</h4>
+
+@if(@Model.Machines.Count == 0)
+{
+  <p>This Engineer is not licensed to repair any machine</p>
+}
+else
+{
+  <ul>
+  @foreach (EngineerMachine join in Model.Machines)
+  {
+    <li>@join.Machine.MachineName | @join.Machine.MachineModelNum</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add Machine License", "AddMachine", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Back to List", "Index")</p>

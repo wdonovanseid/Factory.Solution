@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models;
+
+<div class="jumbotron">
+  <h1>List of Engineers</h1>
+</div>
+
+@if(Model.Count == 0)
+{
+  <p>No Engineers have been hired.</p>
+}
+<ul>
+  @foreach(Engineer eng in Model)
+  {
+    <li>@eng.EngineerName | @Html.ActionLink("Details", "Details", new { id = eng.EngineerId })</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Add a Engineer", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
