@@ -74,5 +74,33 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult Edit(int id)
+    {
+      Machine model = _db.Machines.FirstOrDefault(x => x.MachineId == id);
+      return View(model);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Machine mach)
+    {
+      _db.Entry(mach).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+      Machine model = _db.Machines.FirstOrDefault(x => x.MachineId == id);
+      return View(model);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Machine model = _db.Machines.FirstOrDefault(x => x.MachineId == id);
+      _db.Machines.Remove(model);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }

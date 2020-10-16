@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Edit the Engineer</h4>
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+
+  <p>Name: @Html.EditorFor(model => model.EngineerName, new { @required = "required"})</p>
+
+  <p>Details: @Html.TextBoxFor(model => model.EngineerDetails, new { @required = "required"})</p>
+
+  <input type="submit" value="Edit" class="btn btn-dark" />
+}
+
+<p>@Html.ActionLink("Back to List", "Index")</p>
