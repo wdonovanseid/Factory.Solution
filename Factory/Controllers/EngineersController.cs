@@ -52,13 +52,13 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddMachine(Engineer engineer, int id)
+    public ActionResult AddMachine(Engineer engineer, int MachineId)
     {
-      if (id != 0)
+      if (MachineId != 0)
         {
-          if(_db.EngineerMachine.Where(x => x.MachineId == id && x.EngineerId == engineer.EngineerId).ToHashSet().Count == 0)
+          if(_db.EngineerMachine.Where(x => x.MachineId == MachineId && x.EngineerId == engineer.EngineerId).ToHashSet().Count == 0)
           {
-            _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = id });
+            _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = engineer.EngineerId, MachineId = MachineId });
           }
         }
       _db.SaveChanges();
