@@ -14,5 +14,21 @@ namespace Factory.Models
     public string EngineerDetails { get; set; }
     public virtual ICollection<EngineerMachine> Machines { get; set; }
 
+    public static List<Engineer> Search(List<Engineer> allObject, string searchParam)
+    {
+      List<Engineer> matches = new List<Engineer> { };
+      if (searchParam != null)
+      {
+        foreach (Engineer x in allObject)
+        {
+          if (x.EngineerName.ToUpper().Contains(searchParam.ToUpper()))
+          {
+            matches.Add(x);
+          }
+        }
+      }
+      return matches;
+    }
+
   }
 }

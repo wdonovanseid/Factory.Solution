@@ -102,5 +102,13 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public ActionResult Search(string search)
+    {
+      List<Engineer> searchList = _db.Engineers.Include(x => x.Machines).ToList();
+      List<Engineer> model = Engineer.Search(searchList, search);
+      return View(model);
+    }
+
   }
 }

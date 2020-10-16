@@ -6,4 +6,15 @@
   <h1>Dr. SillyStringz's Factory!</h1>
 </div>
 
+<form action="/Engineers/Search" method="post">
+  <label>Search for Engineer</label>
+  <input class="input" type="text" id="search" name="search">
+  <input type="submit" value="Search" class="btn btn-info buttons" />
+</form>
+<form action="/Machines/Search" method="post">
+  <label>Search for Machine</label>
+  <input class="input" type="text" id="search" name="search">
+  <input type="submit" value="Search" class="btn btn-info buttons" />
+</form>
+
 <p>@Html.ActionLink("List of all Engineers and Machines", "AllEngAndMach")</p>
