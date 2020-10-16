@@ -18,7 +18,6 @@ namespace Factory.Controllers
       {
         _db = db;
       }
-
       public ActionResult AllEngAndMach()
       {
         Dictionary<string, object> model = new Dictionary<string, object>();
